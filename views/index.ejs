@@ -1,0 +1,88 @@
+<link rel="stylesheet" href="./css/bootstrap.min.css">
+
+<a href="/crear" class="btn btn-success mt-4 ml-3"> Crear </a>
+<section class="example mt-4">
+ 
+  <div class="table-responsive" id="tabladatos">
+    <!-- Tabla HTML -->
+  </div>
+ 
+</section>
+<% if (locals.data != '') { %> 
+    <div class="alert alert-primary" role="alert">
+      <%= locals.data %> 
+    </div>
+  <% } %>
+   
+<!-- Código Para Mostrar la Tabla con los datos -->
+<script type="text/javascript">
+    fetch("http://localhost:3000/api/v1/productos").then(response => {
+        if(response.ok) {
+            return response.json();
+        }
+    }).then(data => {
+        if(data) {
+            console.log(data); 
+
+            const ar = data; 
+              let result = `<table class='table table-striped table-bordered table-hover text-center'><thead>
+                            <tr>
+                              <th>Nombre</th>
+                              <th>Precio</th>
+                              <th>Stock</th>
+                              <th>Imagen</th>
+                              <th>Acciones</th>
+                            </tr>
+                            </thead><tbody>`;
+              ar.forEach((elem) => {
+                  result += `<tr>
+                      <td class=v-align-middle>${elem.nombre}</td>
+                      <td class=v-align-middle>${elem.precio}</td>
+                      <td class=v-align-middle>${elem.stock}</td>
+                      <td class=v-align-middle><img src=http://localhost:3000/uploads/${elem.img} class=img-fluid style=max-width:50px></td>
+                      <td class=v-align-middle>
+
+                        <form action="http://localhost:3000/api/v1/productos/eliminar/${elem.id}" method="POST" onsubmit="return confirmarEliminar()">        
+
+                          <a href="/leer?id=${elem.id}" class="btn btn-dark">Detalles</a>
+
+                          <a href="/actualizar?id=${elem.id}" class="btn btn-primary">Editar</a>
+
+                          <button type="submit" class="btn btn-danger">Eliminar</button>
+
+                        </form>  
+
+                      </td>
+                    </tr>`
+                    
+
+              });
+              result += `</tbody></table>`;
+              document.getElementById("tabladatos").innerHTML = result;
+           
+         
+         };
+
+        }
+    ).catch(err => console.error(err));      
+  </script>
+
+  <!-- Código Para eliminar un producto  -->
+  <script type="text/javascript">
+    function confirmarEliminar()
+    {
+    var x = confirm("Estas seguro de Eliminar?");
+    if (x)
+      return true;
+    else
+      return false;
+    }
+</script>
+<script type="text/javascript">
+    function confirmarEliminar() {
+      var x = confirm("Estas seguro de Eliminar?");
+      if (x) return true;
+      else return false;
+    }
+  </script>
+</body>

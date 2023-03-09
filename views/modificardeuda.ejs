@@ -1,0 +1,97 @@
+<link rel="stylesheet" href="./css/bootstrap.min.css">
+<div class="container">
+  <div class="card text-center">
+    <div class="card-body">
+      <h1>Control Financiero</h1>
+      <img src='http://localhost:3000/uploads/icon.jpeg' class='img-fluid' style='max-width:80px'>
+    </div>
+  </div>
+  <form id="formularioupdate" method="POST" role="form" enctype="multipart/form-data">
+    <input type="hidden" name="id" id="id">
+    <div class="mb-3">
+      <label for="nombre_deuda" class="negrita">Nombre Deuda:</label>
+      <div>
+        <input class="form-control" placeholder="" required="required" name="nombre_deuda" type="text" id="nombre_deuda" ngModel>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="valor_deuda" class="negrita">Valor Deuda:</label>
+      <div>
+        <input class="form-control" placeholder="" required="required" name="valor_deuda" type="text" id="valor_deuda" ngModel>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="fecha" class="negrita">Fecha Deuda:</label>
+      <div>
+        <input class="form-control" required="required" name="fecha" type="date" id="fecha">
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="descripcion" class="negrita">Descripcion de la deuda:</label>
+      <div>
+        <textarea name="descripcion_deuda" id="descripcion_deuda" cols="30" rows="10" ngModel></textarea>
+      </div>
+    </div>
+      <button id="btnsend" class="btn btn-dark">Guardar</button>
+      <a href="/home" class="btn btn-warning">Cancelar</a>
+  </form>
+</div>
+
+  
+  <script type="text/javascript">
+    var url = new URL(window.location.href);
+    const id = url.searchParams.get("id");
+    console.log(id)
+    fetch("http://localhost:3000/api/v1/redirect/deuda/" + id).then(response => {
+      console.log(response)
+      if (response.ok) {
+        return response.json();
+      }
+    }).then(data => {
+      if (data) {
+        const ar = data;
+        ar.forEach((elem) => {
+          console.log(elem)
+          //document.getElementById('formularioupdate').action = "http://localhost:3000/api/v1/redirect/modifica/" + elem.id;
+          document.getElementById("id").setAttribute('value', elem.id);
+          document.getElementById("nombre_deuda").setAttribute('value', elem.nombre_deuda);
+          document.getElementById("valor_deuda").setAttribute('value', elem.valor_deuda);
+          document.getElementById("descripcion_deuda").innerHTML = elem.descripcion_deuda;
+        });
+      };
+    }).catch(err => console.error(err));
+  </script>
+  <script>
+    document.getElementById("btnsend").onclick = function(e){
+      var nombre_deuda = document.getElementById('nombre_deuda').value //Obtengo el valor del input nombre
+      var valor_deuda = document.getElementById('valor_deuda').value //Obtengo el valor del input nombre
+      var descripcion_deuda = document.getElementById('descripcion_deuda').value
+      var fecha_deuda = document.getElementById('fecha').value
+      var id = document.getElementById('id').value
+      let datos = {
+            nombre_deuda: nombre_deuda,
+            valor_deuda: valor_deuda,
+            descripcion_deuda: descripcion_deuda,
+            fecha_deuda: fecha_deuda
+
+      };
+      e.preventDefault()
+      
+      fetch('http://localhost:3000/api/v1/redirect/modifica/'+id,  // fetch para enviar el dato
+      {
+          method:"POST",
+          headers:{
+              'Content-Type':'application/json'
+          },
+          body: JSON.stringify(datos)
+      })
+      .then(function(res){
+        console.log(res);
+        let data = JSON.stringify(res)
+        console.log('le cambiaria el final') 
+        window.location.href = "http://localhost:3000/home";
+        console.log(data)
+      })
+    };
+  </script>
+</body>

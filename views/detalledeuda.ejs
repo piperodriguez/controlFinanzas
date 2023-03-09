@@ -1,20 +1,28 @@
 <link rel="stylesheet" href="./css/bootstrap.min.css">
-<section class="example mt-4">
-    <h5>Nombre Deuda: </h5>
-    <p id="deuda"></p>
-   
-    <h5>Descripcion Deuda: </h5>
-    <p id="descripcion_deuda"></p>
-   
-    <h5>Valor Deuda: </h5>
-    <p id="valor"></p>
-   
-    <h5>Saldo Deuda: </h5>
-    <p id="saldo"></p>
-   
-  </section>
+<div class="container">
+  <div class="card text-center">
+    <div class="card-body">
+      <h1>Control Financiero</h1>
+      <img src='http://localhost:3000/uploads/icon.jpeg' class='img-fluid' style='max-width:80px'>
+    </div>
+  </div>
+  <!-- Content here -->
+  <div class="card">
+    <h5 class="card-header">Detalle Deuda</h5>
+    <div class="card-body">
+      <h5 class="card-title"><p id="deuda"></p></h5>
+      <p class="card-text"><p id="descripcion_deuda"></p></p>
+      <span>Valor Deuda:</span>
+      <p class="card-text" id="valor"></p>
+      <span>Saldo Deuda:</span>
+      <p class="card-text" id="saldo"></p>
+      <span>Fecha Deuda:</span>
+      <p class="card-text" id="fecha"></p>
+    </div>
+  </div>
   <a href="/home" class="btn btn-warning mt-3">Volver</a>
-  <script type="text/javascript">
+</div>
+<script type="text/javascript">
     console.log('por aqui')
     var url = new URL(window.location.href);
     const id = url.searchParams.get("id");
@@ -27,7 +35,6 @@
     }).then(data => {
       console.log(data)
       if (data) {
-        console.log(data);
         const ar = data;
         ar.forEach((elem) => {
           console.log(elem.precio)
@@ -35,9 +42,9 @@
           document.getElementById("descripcion_deuda").innerHTML = elem.descripcion_deuda;
           document.getElementById("valor").innerHTML = elem.valor_deuda;
           document.getElementById("saldo").innerHTML = elem.saldo_deuda;
+          document.getElementById("fecha").innerHTML = elem.fecha_deuda;
         });
       };
     }).catch(err => console.error(err));
-  </script>
- 
+</script>
 </body>

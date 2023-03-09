@@ -29,14 +29,15 @@ router.get('/home', mainController.getAll);
  
 // Ruta para crear un nuevo producto 
 router.post('/', upload.single('img'), productoController.create);
+router.post('/save', upload.single('img'), mainController.create);
  
 // Ruta para leer un producto por su ID 
 router.get('/:id', productoController.findById);
  
 router.get('/deuda/:id', mainController.detailDeuda);
- 
 // Ruta para actualizar un producto por su ID 
-router.post('/:id', upload.single('img'), productoController.update);
+//router.post('/:id', upload.single('img'), productoController.update);
+router.post('/modifica/:id',  mainController.modifica);
  
 // Ruta para eliminar un producto por su ID 
 router.post('/eliminar/:id', productoController.delete); 

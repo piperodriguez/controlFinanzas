@@ -46,6 +46,10 @@ app.get('/home', (req,res) => {
 app.get('/crear', (req,res) => {  
   res.render('crear')
 })
+app.get('/crearDeuda', (req,res) => {  
+  res.render('crearDeuda')
+})
+
 app.get('/leer', (req,res) => {  
   res.render('leer')
 })
@@ -59,6 +63,10 @@ app.get('/detail', (req,res) => {
 
 app.get('/actualizar', (req,res) => {  
   res.render('actualizar')
+})
+
+app.get('/modificar', (req,res) => {  
+  res.render('modificardeuda')
 })
  
 // Rutas 

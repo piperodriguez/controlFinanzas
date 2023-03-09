@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const productoController =   require('../controllers/productos'); 
- 
+const mainController =   require('../controllers/main'); 
 // Multer (Subida de imágenes de los productos)
 const multer = require('multer'); 
 var img;
@@ -24,6 +24,8 @@ var upload = multer({ storage: storage })
  
 // Ruta para listar todos los productos 
 router.get('/', productoController.findAll);
+
+router.get('/home', mainController.getAll);
  
 // Ruta para crear un nuevo producto 
 router.post('/', upload.single('img'), productoController.create);

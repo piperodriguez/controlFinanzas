@@ -36,22 +36,34 @@ app.get('/', (req,res) => {
     data: message, // Mensaje para cada tarea realizada 
   })
 })
+app.get('/home', (req,res) => {
+  var message = req.flash('message');  
+  res.render('welcome', {
+    data: message, // Mensaje para cada tarea realizada 
+  })
+})
+
 app.get('/crear', (req,res) => {  
   res.render('crear')
 })
 app.get('/leer', (req,res) => {  
   res.render('leer')
 })
+app.get('/detalle', (req,res) => {  
+  res.render('detalle')
+})
+
 app.get('/actualizar', (req,res) => {  
   res.render('actualizar')
 })
  
-// Ruta Productos 
-const ruta_productos = require('./routes/productos');
+// Rutas 
+const rutas = require('./routes/web');
 const con = require('./config/db');
  
 // Usamos un Middleware 
-app.use('/api/v1/productos', ruta_productos)
+//app.use('/api/v1/redirect', ruta_principal)
+app.use('/api/v1/redirect', rutas)
  
 // Directorio de las imágenes 
 app.use("/uploads",express.static(path.join(__dirname, "uploads")))

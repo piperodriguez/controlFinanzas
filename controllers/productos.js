@@ -32,7 +32,7 @@ exports.create = function(req, res) {
       if (err)
       res.send(err);
       req.flash('message', 'Producto Creado Correctamente !');
-      res.redirect('/');
+      res.redirect('/productos');
     });
   }
 };
@@ -62,7 +62,7 @@ exports.update = function(req, res) {
  
     Producto.update(req.params.id, new Producto(producto), function(err, producto) {      
       req.flash('message', 'Producto Actualizado Correctamente !');
-      res.redirect('/');
+      res.redirect('/productos');
     });
  
   }else{
@@ -83,7 +83,7 @@ exports.update = function(req, res) {
  
       Producto.update(req.params.id, new Producto(aproducto), function(err, aproducto) {      
         req.flash('message', 'Producto Actualizado Correctamente !');
-        res.redirect('/');
+        res.redirect('/productos');
       });
  
     });     

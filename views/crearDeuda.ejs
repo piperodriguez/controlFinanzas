@@ -1,31 +1,40 @@
 <link rel="stylesheet" href="./css/bootstrap.min.css">
-<form method="POST" action="http://localhost:3000/api/v1/redirect/save" role="form" enctype="multipart/form-data">
-    <input type="hidden" name="_method" value="POST">
-    <div class="mb-3">
-      <label for="nombre" class="negrita">Nombre Deuda:</label>
-      <div>
-        <input class="form-control" placeholder="" required="required" name="nombre" type="text" id="nombre">
-      </div>
+<div class="container">
+
+  <div class="card text-center">
+    <div class="card-body">
+      <h1>Control Financiero</h1>
+      <img src='http://localhost:3000/uploads/icon.jpeg' class='img-fluid' style='max-width:80px'>
     </div>
-    <div class="mb-3">
-      <label for="valor" class="negrita">Valor Deuda:</label>
-      <div>
-        <input class="form-control" placeholder="" required="required" name="valor" type="text" id="valor">
+  </div>
+  <form method="POST" action="http://localhost:3000/api/v1/redirect/save" role="form" enctype="multipart/form-data">
+      <input type="hidden" name="_method" value="POST">
+      <div class="mb-3">
+        <label for="nombre" class="negrita">Nombre Deuda:</label>
+        <div>
+          <input class="form-control" placeholder="" required="required" name="nombre" type="text" id="nombre">
+        </div>
       </div>
-    </div>
-    <div class="mb-3">
-      <label for="stock" class="negrita">Fecha Deuda:</label>
-      <div>
-        <input class="form-control" required="required" name="stock" type="date" id="fecha">
+      <div class="mb-3">
+        <label for="valor" class="negrita">Valor Deuda:</label>
+        <div>
+          <input class="form-control" placeholder="" required="required" name="valor" type="text" id="valor">
+        </div>
       </div>
-    </div>
-    <div class="mb-3">
-      <label for="descripcion" class="negrita">Descripcion de la deuda:</label>
-      <div>
-        <textarea name="descripcion" id="descripcion" cols="30" rows="10"></textarea>
+      <div class="mb-3">
+        <label for="stock" class="negrita">Fecha Deuda:</label>
+        <div>
+          <input class="form-control" required="required" name="stock" type="date" id="fecha">
+        </div>
       </div>
-    </div>
-    <button type="submit" class="btn btn-info">Guardar</button>
-    <a href="/home" class="btn btn-warning">Cancelar</a>
+      <div class="mb-3">
+        <label for="descripcion" class="negrita">Descripcion de la deuda:</label>
+        <div>
+          <textarea name="descripcion" id="descripcion" cols="30" rows="10"></textarea>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-dark">Guardar</button>
+      <a href="/home" class="btn btn-warning">Cancelar</a>
   </form>
-  
+    
+</div>

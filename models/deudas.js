@@ -9,10 +9,22 @@ var Deuda = function(deuda){
 };
 
    
-  // Leer un Producto por su ID 
-
+  // Leer un Deuda por su ID 
+  Deuda.detailDeuda = function (id, result) {
+    conexion.query(
+      "SELECT * FROM deudas where id = ? ", 
+      id, 
+      function (err, res) {
+        if(err) {
+          console.log("error: ", err);
+          result(err, null);
+        }else{
+        result(null, res);
+        }
+      });
+  };
    
-  // Listar todos los productos en la Vista Principal 
+  // Listar todos los Deudas en la Vista Principal 
   Deuda.getAll = function (result) {
     console.log(1)
     conexion.query("select * from deudas", function (err, res) {

@@ -12,7 +12,6 @@
     </section>
 </div>
 <script type="text/javascript">
-    debugger;
     fetch("http://localhost:3000/api/v1/redirect/home").then(response => {
         if(response.ok) {
             return response.json();
@@ -41,7 +40,7 @@
 
                         <form action="http://localhost:3000/api/v1/redirect/eliminar/${elem.id}" method="POST" onsubmit="return confirmarEliminar()">        
 
-                          <a href="/detalle?id=${elem.id}" class="btn btn-dark">Detalles</a>
+                          <a href="/detail?id=${elem.id}" class="btn btn-dark">Detalles</a>
 
                           <a href="/actualizar?id=${elem.id}" class="btn btn-primary">Editar</a>
 

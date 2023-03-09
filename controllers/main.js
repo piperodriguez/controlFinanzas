@@ -11,8 +11,9 @@ exports.getAll = function(req, res) {
   });
 };
 
-exports.findById = function(req, res) {
-  Deuda.findById(req.params.id, function(err, deuda) {
+exports.detailDeuda = function(req, res) {
+  console.log('hola en el controlador')
+  Deuda.detailDeuda(req.params.id, function(err, deuda) {
     if (err)
     res.send(err);
     res.json(deuda);

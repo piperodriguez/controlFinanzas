@@ -53,6 +53,10 @@ app.get('/detalle', (req,res) => {
   res.render('detalle')
 })
 
+app.get('/detail', (req,res) => {  
+  res.render('detalledeuda')
+})
+
 app.get('/actualizar', (req,res) => {  
   res.render('actualizar')
 })

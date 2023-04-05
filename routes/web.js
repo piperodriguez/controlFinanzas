@@ -23,12 +23,12 @@ const storage = multer.diskStorage({
 var upload = multer({ storage: storage }) 
  
 // Ruta para listar todos los productos 
-router.get('/', productoController.findAll);
+router.get('/productos', productoController.findAll);
 
 router.get('/home', mainController.getAll);
  
 // Ruta para crear un nuevo producto 
-router.post('/', upload.single('img'), productoController.create);
+router.post('/producto', upload.single('img'), productoController.create);
 router.post('/save', upload.single('img'), mainController.create);
  
 // Ruta para leer un producto por su ID 

@@ -3,6 +3,7 @@ const Producto = require('../models/productos');
  
 // Listar todos los productos en la vista principal  
 exports.findAll = function(req, res) {
+  console.log('desde el controlador')
   Producto.findAll(function(err, producto) {    
     if (err)
     res.send(err);

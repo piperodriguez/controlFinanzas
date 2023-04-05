@@ -1,12 +1,12 @@
-const express = require('express');
-const bodyParser = require('body-parser');
+const express = require('express');//framework js
+const bodyParser = require('body-parser');//middleware req.body
 const app = express();
 const path = require("path"); // Path 
  
 const session = require('express-session');
 app.use(session({secret: 'mySecret', resave: false, saveUninitialized: false})); 
  
-const flash = require('express-flash'); 
+const flash = require('express-flash');//mensajes notificaciones
 app.use(flash());
  
 // EJS template engine 
@@ -26,11 +26,9 @@ app.use(bodyParser.json())
 app.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css')))
 app.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js')))
 app.use('/js', express.static(path.join(__dirname, 'node_modules/jquery/dist')))
- 
-
 
 // Rutas Front 
-app.get('/', (req,res) => {
+app.get('/productos', (req,res) => {
   var message = req.flash('message');  
   res.render('index', {
     data: message, // Mensaje para cada tarea realizada 
@@ -43,7 +41,7 @@ app.get('/home', (req,res) => {
   })
 })
 
-app.get('/crear', (req,res) => {  
+app.get('/crearProducto', (req,res) => {  
   res.render('crear')
 })
 app.get('/crearDeuda', (req,res) => {  

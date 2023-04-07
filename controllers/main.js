@@ -31,7 +31,8 @@ exports.create = function(req, res) {
       valor_deuda: req.body.valor,
       saldo_deuda: 0,
       descripcion_deuda: req.body.descripcion,
-      fecha_deuda: req.body.fecha
+      fecha_deuda: req.body.fecha_deuda,
+      id_producto: req.body.productoDeuda
     }; 
   
     const nueva_deuda = new Deuda(deuda);

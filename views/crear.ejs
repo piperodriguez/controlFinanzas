@@ -1,31 +1,39 @@
 <link rel="stylesheet" href="./css/bootstrap.min.css">
-<form method="POST" action="http://localhost:3000/api/v1/redirect/producto" role="form" enctype="multipart/form-data">
-    <input type="hidden" name="_method" value="POST">
-    <div class="mb-3">
-      <label for="nombre" class="negrita">Nombre:</label>
-      <div>
-        <input class="form-control" placeholder="Zapatos Marrones de Cuero" required="required" name="nombre" type="text" id="nombre">
-      </div>
+<div class="container">
+  <div class="card text-center">
+    <div class="card-body">
+      <h1>Control Financiero</h1>
+      <img src='http://localhost:3000/uploads/icon.jpeg' class='img-fluid' style='max-width:80px'>
     </div>
-    <div class="mb-3">
-      <label for="precio" class="negrita">Precio:</label>
-      <div>
-        <input class="form-control" placeholder="4.50" required="required" name="precio" type="text" id="precio">
+  </div>
+  <form method="POST" action="http://localhost:3000/api/v1/redirect/producto" role="form" enctype="multipart/form-data">
+      <input type="hidden" name="_method" value="POST">
+      <div class="mb-3">
+        <label for="nombre" class="negrita">Nombre:</label>
+        <div>
+          <input class="form-control" placeholder="Zapatos Marrones de Cuero" required="required" name="nombre" type="text" id="nombre">
+        </div>
       </div>
-    </div>
-    <div class="mb-3">
-      <label for="stock" class="negrita">Stock:</label>
-      <div>
-        <input class="form-control" placeholder="40" required="required" name="stock" type="text" id="stock">
+      <div class="mb-3">
+        <label for="precio" class="negrita">Precio:</label>
+        <div>
+          <input class="form-control" placeholder="4.50" required="required" name="precio" type="text" id="precio">
+        </div>
       </div>
-    </div>
-    <div class="mb-3">
-      <label for="img" class="negrita">Selecciona una imagen:</label>
-      <div>
-        <input name="img" type="file" id="img" required>
+      <div class="mb-3">
+        <label for="stock" class="negrita">Stock:</label>
+        <div>
+          <input class="form-control" placeholder="40" required="required" name="stock" type="text" id="stock">
+        </div>
       </div>
-    </div>
-    <button type="submit" class="btn btn-info">Guardar</button>
-    <a href="/" class="btn btn-warning">Cancelar</a>
+      <div class="mb-3">
+        <label for="img" class="negrita">Selecciona una imagen:</label>
+        <div>
+          <input name="img" type="file" id="img" required>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-info">Guardar</button>
+      <a href="/productos" class="btn btn-warning">Cancelar</a>
   </form>
+</div>
   

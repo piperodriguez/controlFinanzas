@@ -7,6 +7,7 @@ var Deuda = function(deuda){
     this.saldo_deuda = deuda.saldo_deuda;
     this.descripcion_deuda = deuda.descripcion_deuda;
     this.fecha_deuda = deuda.fecha_deuda;
+    this.id_producto = deuda.id_producto;
 };
 
    

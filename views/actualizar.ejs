@@ -1,43 +1,45 @@
 <link rel="stylesheet" href="./css/bootstrap.min.css">
-<form id="actualizar" method="POST" role="form" enctype="multipart/form-data">
-    <input type="hidden" name="id" id="id">
-    <div class="mb-3">
-      <label for="nombre" class="negrita">Nombre:</label>
-      <div>
-        <input class="form-control" placeholder="Zapatos Marrones de Cuero" required="required" name="nombre" type="text" id="nombre">
+<div class="container">
+  <form id="actualizar" method="POST" role="form" enctype="multipart/form-data">
+      <input type="hidden" name="id" id="id">
+      <div class="mb-3">
+        <label for="nombre" class="negrita">Nombre:</label>
+        <div>
+          <input class="form-control" required="required" name="nombre" type="text" id="nombre">
+        </div>
       </div>
-    </div>
-    <div class="mb-3">
-      <label for="precio" class="negrita">Precio:</label>
-      <div>
-        <input class="form-control" placeholder="4.50" required="required" name="precio" type="text" id="precio">
+      <div class="mb-3">
+        <label for="precio" class="negrita">Precio:</label>
+        <div>
+          <input class="form-control"  required="required" name="precio" type="text" id="precio">
+        </div>
       </div>
-    </div>
-    <div class="mb-3">
-      <label for="stock" class="negrita">Stock:</label>
-      <div>
-        <input class="form-control" placeholder="40" required="required" name="stock" type="text" id="stock">
+      <div class="mb-3">
+        <label for="stock" class="negrita">Stock:</label>
+        <div>
+          <input class="form-control"  required="required" name="stock" type="text" id="stock">
+        </div>
       </div>
-    </div>
-    <div class="mb-3">
-      <label for="img" class="negrita">Selecciona una imagen:</label>
-      <div>
-        <input name="img" type="file" id="img">
+      <div class="mb-3">
+        <label for="img" class="negrita">Selecciona una imagen:</label>
+        <div>
+          <input name="img" type="file" id="img">
+        </div>
       </div>
-    </div>
-    <div class="mb-3 col-md-3">
-      <label for="img" class="negrita">Imagen Actual:</label>
-      <div>
-        <img id="imgactual" class="img-fluid">
+      <div class="mb-3 col-md-3">
+        <label for="img" class="negrita">Imagen Actual:</label>
+        <div>
+          <img id="imgactual" class="img-fluid">
+        </div>
       </div>
-    </div>
-    <button type="submit" class="btn btn-info">Guardar</button>
-    <a href="/" class="btn btn-warning">Cancelar</a>
+      <button type="submit" class="btn btn-info">Guardar</button>
+      <a href="/productos" class="btn btn-warning">Cancelar</a>
   </form>
-  <script type="text/javascript">
+</div>
+<script type="text/javascript">
     var url = new URL(window.location.href);
     const id = url.searchParams.get("id");
-    fetch("http://localhost:3000/api/v1/productos/" + id).then(response => {
+    fetch("http://localhost:3000/api/v1/redirect/producto/" + id).then(response => {
       if (response.ok) {
         return response.json();
       }
@@ -48,7 +50,7 @@
         ar.forEach((elem) => {
           console.log(elem.precio)
           document.getElementById("id").setAttribute('value', elem.id);
-          document.getElementById('actualizar').action = "http://localhost:3000/api/v1/productos/" + elem.id;
+          document.getElementById('actualizar').action = "http://localhost:3000/api/v1/redirect/producto/" + elem.id;
           document.getElementById("nombre").setAttribute('value', elem.nombre);
           document.getElementById("precio").setAttribute('value', elem.precio);
           document.getElementById("stock").setAttribute('value', elem.stock);
@@ -56,6 +58,6 @@
         });
       };
     }).catch(err => console.error(err));
-  </script>
+</script>
  
 </body>
